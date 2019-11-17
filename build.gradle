@@ -59,9 +59,6 @@ dependencies {
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
-  runtimeOnly    'ch.qos.logback:logback-classic:1.2.3'
-  // runtime 'org.codehaus.groovy:groovy:2.5.8'
-
   testImplementation 'org.testng:testng:7.0.0'
 }
 

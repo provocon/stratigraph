@@ -38,11 +38,27 @@ build.
 
 ## Usage
 
-Call the start script with a source code directory as the first parameter:
+Call the start script with no parameter to analyse the current directory:
 
 ```
-stg ~/proj/base
+stg
 ```
+
+Parameters are described with the help option `-h`
+
+```
+stg -h
+Starting at directory /home/martin/proj/development/analyze/source
+usage: tool
+ -d,--basedir <arg>   base directory to scan for java source files.
+ -g,--graphstream     Use Graphstream library instead of JUNG.
+ -h,--help            Issue this help message and exit.
+ -i,--internal        Only take references internal to the project into account.
+ -j,--jgrapht         Use JGraphT library instead of JUNG.
+ -t,--delay <arg>     Delay in ms when drawing with the Graphstream 1library.
+ -w,--draw            When using JUNG library really draw the graph in a window.
+```
+
 
 ## Unachived Ultimate Goal and Visualizations
 
@@ -59,6 +75,10 @@ options on the command line, which still can be used to trigger graphical
 windows to be opened with a view of the software structure using different
 graph libraries.
 
+Stratigraph supports the automated visualization of the resulting graph based
+on the JUNG library. Alternatively the graph can be handled using the
+graphstream library or the JGraphT Library.
+
 ## Building
 
 Stratigraph itself is a Java program which can be built with the [Gradle][gradle]
@@ -73,6 +93,25 @@ The full test cycle can be achieved - like CI does it - with
 ```
 ./gradlew jacocoTestReport audit build assemble
 ```
+
+
+## Licensing
+
+WHile the source code in this repository is covered by the license mentioned
+in the file LICENSE, the libraries it depends on retain their own respective
+license which needs to be taken into account.
+
+* Apache License 2.0: Groovy, Guava, Scala,
+                      Apache Commons Lang, Apache Commons Collections
+
+* BSD 3-Clause: JUNG
+
+* MIT: Slf4j
+
+* LGPL 2.1: JGraphtT, Logback
+
+* LGPL 3: GraphStream
+
 
 [issues]: https://github.com/provocon/stratigraph/issues
 [github]: https://github.com/provocon/stratigraph

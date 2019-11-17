@@ -17,11 +17,11 @@
 package de.provocon.stratigraph.command;
 
 import de.provocon.stratigraph.Package;
-import de.provocon.stratigraph.source.JavaSourceProvider;
 import de.provocon.stratigraph.graphs.GraphstreamVisualizer;
 import de.provocon.stratigraph.graphs.JGraphTVisualizer;
 import de.provocon.stratigraph.graphs.JungVisualizer;
 import de.provocon.stratigraph.graphs.Visualizer;
+import de.provocon.stratigraph.source.JavaSourceProvider;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -85,7 +85,7 @@ public final class Analyse {
 
         if (cmd.hasOption('h')) {
             HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("tool", options);
+            formatter.printHelp("stg", options);
         } else {
             boolean useGraphstream = cmd.hasOption('g');
             boolean useJGraphT = cmd.hasOption('j');
