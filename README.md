@@ -29,10 +29,14 @@ packages might be combined for a more coarse view if needed.
 
 * Java
 
+
 ## Download of Packages
 
-The latest packages ready to use can be found at the [build pipeline](https://gitlab.com/provocon/stratigraph/pipelines)
-at [GitLab][gitlab]. Just download the build artifacts fro the last `passed`
+[Download ZIP](https://gitlab.com/provocon/stratigraph/-/jobs/artifacts/master/download?job=build)
+
+The latest packages ready to use can be found at the on [GitLab][gitlab] at the
+latest [build pipeline](https://gitlab.com/provocon/stratigraph/pipelines)
+at [GitLab][gitlab]. Just download the build artifacts from the last `passed`
 build.
 
 
