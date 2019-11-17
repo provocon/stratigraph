@@ -52,9 +52,14 @@ Stratigraph itself is a Java program which can be built with the [Gradle][gradle
 build tool.
 
 ```
-./gradlew build
+./gradlew assembleDist
 ```
 
+The full test cycle can be achieved - like CI does it - with
+
+```
+./gradlew jacocoTestReport audit build assembleDist
+```
 
 [issues]: https://github.com/provocon/stratigraph/issues
 [github]: https://github.com/provocon/stratigraph
