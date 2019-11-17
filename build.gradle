@@ -37,32 +37,32 @@ repositories {
 }
 
 dependencies {
-  compile 'org.slf4j:slf4j-api:1.7.29'
-  runtime 'ch.qos.logback:logback-classic:1.2.3'
-  runtime 'org.codehaus.groovy:groovy:2.5.8'
-  compile 'org.apache.commons:commons-lang3:3.9'
-  compile 'org.apache.commons:commons-collections4:4.4'
-  compile 'commons-cli:commons-cli:1.4'
+  implementation 'org.slf4j:slf4j-api:1.7.29'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.2.3'
+  // output is achieved via logging through special logback.groovy - this is why groovy is needed here
+  runtimeOnly    'org.codehaus.groovy:groovy:2.5.8'
+  implementation 'org.apache.commons:commons-lang3:3.9'
+  implementation 'org.apache.commons:commons-collections4:4.4'
+  implementation 'commons-cli:commons-cli:1.4'
 
-  compile 'org.graphstream:gs-core:1.3'
-  compile 'org.graphstream:gs-ui:1.3'
-  compile 'org.scala-lang:scala-library:2.13.1' // override scala lib for graphstream due to vulnerability
+  implementation 'org.graphstream:gs-core:1.3'
+  implementation 'org.graphstream:gs-ui:1.3'
+  implementation 'org.scala-lang:scala-library:2.11.12' // override scala lib for graphstream due to vulnerability
 
-  compile 'net.sf.jung:jung-api:2.1.1'
-  compile 'net.sf.jung:jung-graph-impl:2.1.1'
-  compile 'net.sf.jung:jung-visualization:2.1.1'
-  compile 'net.sf.jung:jung-algorithms:2.1.1'
-  compile 'net.sf.jung:jung-io:2.1.1'
-  compile 'net.sf.jung:jung-graph-impl:2.1.1'
-  compile 'com.google.guava:guava:28.1-jre' // override guava for jung due to vulnerability
+  implementation 'net.sf.jung:jung-api:2.1.1'
+  implementation 'net.sf.jung:jung-graph-impl:2.1.1'
+  implementation 'net.sf.jung:jung-visualization:2.1.1'
+  implementation 'net.sf.jung:jung-algorithms:2.1.1'
+  implementation 'net.sf.jung:jung-io:2.1.1'
+  implementation 'net.sf.jung:jung-graph-impl:2.1.1'
+  implementation 'com.google.guava:guava:28.1-jre' // override guava for jung due to vulnerability
 
-  compile 'org.javabits.jgrapht:jgrapht-core:0.9.3'
+  implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
-  runtime 'ch.qos.logback:logback-classic:1.2.3'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.2.3'
   // runtime 'org.codehaus.groovy:groovy:2.5.8'
 
-  testCompile 'org.testng:testng:7.0.0'
-  // tests are logging at debug level through special logback.groovy - this is why groovy is needed here
+  testImplementation 'org.testng:testng:7.0.0'
 }
 
 lombok {
@@ -93,7 +93,7 @@ jacocoTestReport {
   }
 }
 
-mainClassName='de.provocon.stratigraph.Analyse'
+mainClassName='de.provocon.stratigraph.command.Analyse'
 
 application {
   applicationName = 'stg'

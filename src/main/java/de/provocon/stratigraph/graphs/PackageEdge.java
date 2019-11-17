@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 PROVOCON
+ * Copyright 2016-2019 PROVOCON
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,16 +19,16 @@ package de.provocon.stratigraph.graphs;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 
 
 /**
  * Edge class for some visualizers.
  * The Jung library and the JGraphT library don't come with a sufficient generic implementations.
+ *
+ * @author Martin Goellnitz
  */
 @AllArgsConstructor
 @EqualsAndHashCode
-@ToString
 public class PackageEdge {
 
     @Getter
@@ -39,5 +39,11 @@ public class PackageEdge {
 
     @Getter
     private int weight;
+
+
+    @Override
+    public String toString() {
+        return from+" -"+weight+"-> "+to;
+    }
 
 }

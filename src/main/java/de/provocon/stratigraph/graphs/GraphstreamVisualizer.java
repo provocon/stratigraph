@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Martin Goellnitz
+ * Copyright 2016-2019 PROVOCON
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,7 +16,6 @@
  */
 package de.provocon.stratigraph.graphs;
 
-import de.provocon.stratigraph.Analyse;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,6 +36,8 @@ import org.graphstream.ui.view.Viewer;
 
 /**
  * Visualize source code measures through graphstream library.
+ *
+ * @author Martin Goellnitz
  */
 @Slf4j
 public class GraphstreamVisualizer implements Visualizer {
@@ -66,7 +67,7 @@ public class GraphstreamVisualizer implements Visualizer {
     @Override
     public void init(String title) {
         g = new SingleGraph(title);
-        URL cssResource = Analyse.class.getResource("/graph.css");
+        URL cssResource = GraphstreamVisualizer.class.getResource("/graph.css");
         LOG.debug("css: {}", cssResource);
         g.addAttribute("ui.stylesheet", "url('"+cssResource.toString()+"')");
         Viewer viewer = g.display();

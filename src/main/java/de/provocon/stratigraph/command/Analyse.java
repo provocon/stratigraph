@@ -14,8 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package de.provocon.stratigraph;
+package de.provocon.stratigraph.command;
 
+import de.provocon.stratigraph.Package;
 import de.provocon.stratigraph.source.JavaSourceProvider;
 import de.provocon.stratigraph.graphs.GraphstreamVisualizer;
 import de.provocon.stratigraph.graphs.JGraphTVisualizer;
