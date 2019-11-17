@@ -11,3 +11,4 @@ appenders.add('CONSOLE')
 
 root OFF, appenders
 logger "com", INFO, appenders, false
+logger "de.provocon", INFO, appenders, false

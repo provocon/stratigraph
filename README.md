@@ -29,7 +29,20 @@ packages might be combined for a more coarse view if needed.
 
 * Java
 
+## Download of Packages
+
+The latest packages ready to use can be found at the [build pipeline](https://gitlab.com/provocon/stratigraph/pipelines)
+at [GitLab][gitlab]. Just download the build artifacts fro the last `passed`
+build.
+
+
 ## Usage
+
+Call the start script with a source code directory as the first parameter:
+
+```
+stg ~/proj/base
+```
 
 ## Unachived Ultimate Goal and Visualizations
 
@@ -58,7 +71,7 @@ build tool.
 The full test cycle can be achieved - like CI does it - with
 
 ```
-./gradlew jacocoTestReport audit build assembleDist
+./gradlew jacocoTestReport audit build assemble
 ```
 
 [issues]: https://github.com/provocon/stratigraph/issues

@@ -38,6 +38,8 @@ repositories {
 
 dependencies {
   compile 'org.slf4j:slf4j-api:1.7.29'
+  runtime 'ch.qos.logback:logback-classic:1.2.3'
+  runtime 'org.codehaus.groovy:groovy:2.5.8'
   compile 'org.apache.commons:commons-lang3:3.9'
   compile 'org.apache.commons:commons-collections4:4.4'
   compile 'commons-cli:commons-cli:1.4'
@@ -61,8 +63,6 @@ dependencies {
 
   testCompile 'org.testng:testng:7.0.0'
   // tests are logging at debug level through special logback.groovy - this is why groovy is needed here
-  testRuntime 'ch.qos.logback:logback-classic:1.2.3'
-  // testRuntime 'org.codehaus.groovy:groovy:2.5.8'
 }
 
 lombok {
@@ -94,6 +94,10 @@ jacocoTestReport {
 }
 
 mainClassName='de.provocon.stratigraph.Analyse'
+
+application {
+  applicationName = 'stg'
+}
 
 // Just my test target
 run {

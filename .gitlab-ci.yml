@@ -24,10 +24,12 @@ stages:
 
 build:
   stage: stratigraph
-  script: ./gradlew jacocoTestReport audit build assembleDist
+  script: 
+  - ./gradlew jacocoTestReport audit build assemble
+  - unzip build/distributions/*.zip
   artifacts:
     paths:
-    - build/distributions/*
+    - stg*
     expire_in: 10 days
     name: ${CI_BUILD_STAGE}
 
