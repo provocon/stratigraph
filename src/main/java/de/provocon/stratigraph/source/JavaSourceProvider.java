@@ -21,10 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -173,52 +170,6 @@ public class JavaSourceProvider extends AbstractSourceProvider implements Source
             }
         }
         return packageName;
-    }
-
-
-    /**
-     * Obtain all class names referenced by the given package.
-     *
-     * @param packageName name of the package to obtain references for
-     * @return set of class names
-     */
-    @Override
-    public List<String> getImportsForPackage(String packageName) {
-        List<String> result = new ArrayList<>(128);
-        Set<String> packageNames = Collections.emptySet();
-        if (isOnlyInternalRelations()) {
-            packageNames = getPackageNames();
-        }
-        for (String imp : getImports().keySet()) {
-            LOG.debug("getImports({}) {}", packageName, imp);
-            if (packageName.equals(getPackageName(imp))) {
-                for (String i : getImports().get(imp)) {
-                    if (!i.startsWith(packageName)&&(packageNames.contains(getPackageName(i))||(!isOnlyInternalRelations()))) {
-                        result.add(i);
-                    }
-                }
-            }
-        }
-        return result;
-    }
-
-
-    /**
-     * Obtain all package names available from this source repository.
-     *
-     * @return set of package names
-     */
-    @Override
-    public Set<String> getPackageNames() {
-        Set<String> result = new HashSet<>();
-        for (String className : getImports().keySet()) {
-            String packageName = getPackageName(className);
-            LOG.debug("getPackageNames() {} -> {}", className, packageName);
-            if (!result.contains(packageName)) {
-                result.add(packageName);
-            }
-        }
-        return result;
     }
 
 }

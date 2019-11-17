@@ -16,10 +16,15 @@
  */
 package de.provocon.stratigraph.source;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 
 /**
@@ -27,6 +32,7 @@ import lombok.Getter;
  *
  * @author Martin Goellnitz
  */
+@Slf4j
 public abstract class AbstractSourceProvider {
 
     @Getter
@@ -53,6 +59,60 @@ public abstract class AbstractSourceProvider {
         this.ignorePackages = ignores;
         this.aggregationPackages = aggregations;
         this.onlyInternalRelations = onlyInternalRelations;
+    }
+
+
+    /**
+     * Derive package name from class name.
+     * Takes possible package aggregations into account and thus may shorten package name.
+     *
+     * @param className name of the class to obtain the package name for
+     * @return name of potentially aggregated package
+     */
+    public abstract String getPackageName(String className);
+
+
+    /**
+     * Obtain all package names available from this source repository.
+     *
+     * @return set of package names
+     */
+    public Set<String> getPackageNames() {
+        Set<String> result = new HashSet<>();
+        for (String className : getImports().keySet()) {
+            String packageName = getPackageName(className);
+            LOG.debug("getPackageNames() {} -> {}", className, packageName);
+            if (!result.contains(packageName)) {
+                result.add(packageName);
+            }
+        }
+        return result;
+    }
+
+
+    /**
+     * Obtain all class names referenced by the given package.
+     *
+     * @param packageName name of the package to obtain references for
+     * @return set of class names
+     */
+    public List<String> getImportsForPackage(String packageName) {
+        List<String> result = new ArrayList<>(128);
+        Set<String> packageNames = Collections.emptySet();
+        if (isOnlyInternalRelations()) {
+            packageNames = getPackageNames();
+        }
+        for (String imp : getImports().keySet()) {
+            LOG.debug("getImports({}) {}", packageName, imp);
+            if (packageName.equals(getPackageName(imp))) {
+                for (String i : getImports().get(imp)) {
+                    if (!i.startsWith(packageName)&&(packageNames.contains(getPackageName(i))||(!isOnlyInternalRelations()))) {
+                        result.add(i);
+                    }
+                }
+            }
+        }
+        return result;
     }
 
 }
