@@ -1,0 +1,77 @@
+node {
+  /* text-mode: hidden; */
+  size: 10px;
+  fill-color: #909090;
+  text-size: 15px;
+  z-index: 0;
+}
+
+edge {
+  shape: line;
+  fill-color: #6050F0;
+  arrow-size: 6px, 4px;
+}
+
+edge.w1 {
+  size: 1px;
+}
+
+edge.w2 {
+  size: 2px;
+}
+
+edge.w3 {
+  size: 3px;
+}
+
+edge.w4 {
+  size: 4px;
+}
+
+edge.w5 {
+  size: 5px;
+}
+
+edge.w6 {
+  size: 6px;
+}
+
+edge.w7 {
+  size: 7px;
+}
+
+edge.w8 {
+  size: 8px;
+}
+
+edge.w9 {
+  size: 9px;
+}
+
+edge.w10 {
+  size: 10px;
+}
+
+edge.w11 {
+  size: 11px;
+}
+
+edge.w12 {
+  size: 12px;
+}
+
+edge.w13 {
+  size: 13px;
+}
+
+edge.w14 {
+  size: 14px;
+}
+
+edge.w15 {
+  size: 15px;
+}
+
+edge.w16{
+  size: 16px;
+}

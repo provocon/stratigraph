@@ -1,0 +1,108 @@
+/*
+ *
+ * Copyright 2015-2019 Martin Goellnitz
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+plugins {
+  id 'net.ossindex.audit' version '0.4.11'
+  id 'io.franzbecker.gradle-lombok' version '3.0.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'jacoco'
+apply plugin: 'pmd'
+
+defaultTasks 'clean', 'build'
+
+println "Gradle: ${gradle.gradleVersion}"
+
+version='0.1-SNAPSHOT'
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile 'org.slf4j:slf4j-api:1.7.29'
+  compile 'org.apache.commons:commons-lang3:3.9'
+  compile 'org.apache.commons:commons-collections4:4.4'
+  compile 'commons-cli:commons-cli:1.4'
+
+  compile 'org.graphstream:gs-core:1.3'
+  compile 'org.graphstream:gs-ui:1.3'
+
+  compile 'net.sf.jung:jung-api:2.1.1'
+  compile 'net.sf.jung:jung-graph-impl:2.1.1'
+  compile 'net.sf.jung:jung-visualization:2.1.1'
+  compile 'net.sf.jung:jung-algorithms:2.1.1'
+  compile 'net.sf.jung:jung-io:2.1.1'
+  compile 'net.sf.jung:jung-graph-impl:2.1.1'
+
+  compile 'org.javabits.jgrapht:jgrapht-core:0.9.3'
+
+  runtime 'ch.qos.logback:logback-classic:1.2.3'
+  // runtime 'org.codehaus.groovy:groovy:2.5.8'
+
+  testCompile 'org.testng:testng:7.0.0'
+  // tests are logging at debug level through special logback.groovy - this is why groovy is needed here
+  testRuntime 'ch.qos.logback:logback-classic:1.2.3'
+  // testRuntime 'org.codehaus.groovy:groovy:2.5.8'
+}
+
+lombok {
+  version = "1.18.10"
+  sha256 = "39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742"
+}
+
+pmd {
+  ruleSets = []
+  ruleSetFiles = files('pmd.xml')
+  sourceSets = [sourceSets.main]
+  toolVersion = '6.19.0'
+}
+
+test {
+  useTestNG() {
+  }
+}
+
+jacoco {
+  toolVersion = '0.8.5'
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled = true // coveralls plugin depends on xml format report
+    html.enabled = true
+  }
+}
+
+mainClassName='de.provocon.stratigraph.Analyse'
+
+// Just my test target
+run {
+  args "-j", "-i", "-d", "/home/martin/proj/tangram/system"
+}
+
+// Basic code setup
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+compileJava.options.deprecation = true
+
+// Don't issue tar archive
+distTar.enabled = false

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ Copyright 2015-2019 Martin Goellnitz
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<ruleset name="Custom Ruleset for Dinistiq"
+         xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+         xmlns='http://pmd.sourceforge.net/ruleset/2.0.0'
+         xsi:schemaLocation='http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd'>
+         
+  <description>
+    Nearly default setup of PMD rules with some exceptions.
+    Some of the default rules of PMD don't help in parts of the code to improve 
+    readability and correctness. It may well not be in sync with latest changes
+    of PMD and partly is copied from other projects.
+  </description>
+
+  <rule ref="category/java/bestpractices.xml">
+    <exclude name="GuardLogStatement"/>
+    <exclude name="UseVarargs"/>
+  </rule>
+  <rule ref="category/java/codestyle.xml">
+    <exclude name="AtLeastOneConstructor"/>
+    <exclude name="LocalVariableCouldBeFinal"/>
+    <exclude name="MethodArgumentCouldBeFinal"/>
+    <exclude name="OnlyOneReturn"/>
+    <exclude name="ShortVariable"/>
+    <exclude name="UselessParentheses"/>
+    <exclude name="UseUnderscoresInNumericLiterals"/>
+  </rule>
+  <rule ref="category/java/codestyle.xml/LinguisticNaming">
+    <properties>
+      <property name="checkSetters" value="false"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/LongVariable">
+    <properties>
+      <property name="minimum" value="34"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml">
+    <exclude name="AvoidCatchingGenericException"/>
+    <exclude name="AvoidThrowingRawExceptionTypes"/>
+    <exclude name="CyclomaticComplexity"/>
+    <exclude name="LoosePackageCoupling"/>
+    <exclude name="LawOfDemeter"/>
+    <!-- not necessarily a good ideas for other projects -->
+    <exclude name="NPathComplexity"/>
+  </rule>
+  <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">
+    <properties>
+      <property name="problemDepth" value="5"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/codestyle.xml/ShortClassName">
+    <properties>
+      <property name="minimum" value="4"/>
+    </properties>
+  </rule>
+  <!-- settings don't work
+  <rule ref="category/java/design.xml/CyclomaticComplexity">
+    <properties>
+      <property name="classReportLevel" value="165"/>
+      <property name="methodReportLevel" value="40"/>
+    </properties>
+  </rule>
+  -->
+  <rule ref="category/java/design.xml/ExcessiveImports">
+    <properties>
+      <property name="minimum" value="35"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/ExcessiveMethodLength">
+    <properties>
+      <property name="minimum" value="200"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/ExcessivePublicCount">
+    <properties>
+      <property name="minimum" value="65"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/NcssCount" >
+    <properties>
+      <property name="classReportLevel" value="1500"/>
+      <property name="methodReportLevel" value="130"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/design.xml/TooManyMethods">
+    <properties>
+      <property name="maxmethods" value="25"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/documentation.xml">
+    <exclude name="CommentSize"/>
+  </rule>
+  <rule ref="category/java/documentation.xml/CommentRequired">
+    <properties>
+      <property name="fieldCommentRequirement" value="Ignored"/>
+    </properties>
+  </rule>
+  <rule ref="category/java/errorprone.xml">
+    <exclude name="AvoidLiteralsInIfCondition"/>
+    <exclude name="BeanMembersShouldSerialize"/>
+    <exclude name="DataflowAnomalyAnalysis"/>
+  </rule>
+  <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
+    <properties>
+      <property name="minimumLength" value="5"/>
+      <property name="maxDuplicateLiterals" value="4"/>
+    </properties>
+  </rule>
+  <!-- too many false positives
+  <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis">
+    <properties>
+      <property name="maxPaths" value="8000"/>
+      <property name="maxViolations" value="500"/>
+    </properties>
+  </rule>
+  -->
+  <rule ref="category/java/multithreading.xml">
+    <exclude name="UseConcurrentHashMap"/>
+  </rule>
+  <rule ref="category/java/performance.xml">
+    <exclude name="AvoidInstantiatingObjectsInLoops"/>
+    <exclude name="AddEmptyString"/>
+    <exclude name="ConsecutiveAppendsShouldReuse"/>
+  </rule>
+  <rule ref="category/java/security.xml"/>
+
+</ruleset>
