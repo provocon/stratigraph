@@ -1,5 +1,7 @@
 # Stratigraph Softwarepackage Layer Analyser
 
+[![Build Status](https://gitlab.com/provocon/stratigraph/badges/master/build.svg)](https://gitlab.com/provocon/stratigraph/pipelines)
+
 Stratigraph is at the moment is a small command line tools to automatically
 detect the interconnection of soure code packages and the resulting layering
 of the overall system.
