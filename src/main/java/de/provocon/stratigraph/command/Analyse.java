@@ -46,9 +46,9 @@ import org.apache.commons.cli.ParseException;
 @Slf4j
 public final class Analyse {
 
-    private static final String FILENAME_AGGREGATION_LIST = "/analyse.aggregation.list";
+    private static final String FILENAME_AGGREGATION_LIST = "/.stratigraph.aggregation.list";
 
-    private static final String FILENAME_IGNORE_LIST = "/analyse.ignore.list";
+    private static final String FILENAME_IGNORE_LIST = "/.stratigraph.ignore.list";
 
 
     private Analyse() {
@@ -104,6 +104,7 @@ public final class Analyse {
             } else {
                 ignores.add("java.");
                 ignores.add("org.slf4j.");
+                ignores.add("lombok.");
             }
 
             File aggregationsFile = new File(baseDir+FILENAME_AGGREGATION_LIST);
