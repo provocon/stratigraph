@@ -104,9 +104,11 @@ public class JGraphTVisualizer implements Visualizer {
 
     /**
      * Display graph.
+     *
+     * @return Tell if sollected source set is completely layered.
      */
     @Override
-    public void display() {
+    public boolean display() {
         // LOG.info("display() vertices: {} / {}", g.getVertices().size(), g.getVertexCount());
         List<String> outZero = new ArrayList<>();
         for (String n : g.vertexSet()) {
@@ -186,7 +188,9 @@ public class JGraphTVisualizer implements Visualizer {
 
         int base = aggregatedPreviousLayers.size()+remainingNodes.size();
         int layered = aggregatedPreviousLayers.size();
-        LOG.info("\ndisplay() {} of {} layered ({}%)", layered, base, layered*100/(base));
+        int percentage = layered*100/(base);
+        LOG.info("\ndisplay() {} of {} layered ({}%)", layered, base, percentage);
+        return percentage >= 100;
     }
 
 }

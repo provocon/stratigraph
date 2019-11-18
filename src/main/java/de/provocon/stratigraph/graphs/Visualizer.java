@@ -43,7 +43,9 @@ public interface Visualizer {
 
     /**
      * Display graph.
+     *
+     * @return Tell if sollected source set is completely layered.
      */
-    void display();
+    boolean display();
 
 }

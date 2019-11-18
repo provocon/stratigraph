@@ -75,6 +75,7 @@ public final class Analyse {
         Options options = new Options();
         options.addOption("d", "basedir", true, "base directory to scan for java source files.");
         options.addOption("i", "internal", false, "Only take references internal to the project into account.");
+        options.addOption("e", "noerror", false, "Don't issue error to calling operating system when not 100% layered.");
         options.addOption("h", "help", false, "Issue this help message and exit.");
         options.addOption("g", "graphstream", false, "Use Graphstream library instead of Jung.");
         options.addOption("j", "jgrapht", false, "Use JGraphT library instead of Jung.");
@@ -91,6 +92,7 @@ public final class Analyse {
             boolean useJGraphT = cmd.hasOption('j');
             boolean onlyInternalReferences = cmd.hasOption('i');
             boolean draw = cmd.hasOption('w');
+            boolean noerror = cmd.hasOption('e');
             int delay = Integer.parseInt(cmd.getOptionValue('t', "50"));
             String baseDir = cmd.getOptionValue("d", ".");
             File ignoresFile = new File(baseDir+FILENAME_IGNORE_LIST);
@@ -133,7 +135,10 @@ public final class Analyse {
                 // LOG.info("package imports {}: {}", p.getName(), targetPackages);
                 v.addToGraph(packageName, targetPackages);
             }
-            v.display();
+            boolean success = v.display();
+            if (!(noerror || success)) {
+                System.exit(1); // NOPMD
+            }
         }
     }
 

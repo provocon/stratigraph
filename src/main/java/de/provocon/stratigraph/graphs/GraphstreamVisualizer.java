@@ -127,9 +127,11 @@ public class GraphstreamVisualizer implements Visualizer {
 
     /**
      * Display and evaluate graph.
+     *
+     * @return Tell if sollected source set is completely layered.
      */
     @Override
-    public void display() {
+    public boolean display() {
         Comparator<Node> nodeComparator = new Comparator<Node>() {
 
             /**
@@ -223,7 +225,9 @@ public class GraphstreamVisualizer implements Visualizer {
 
         int base = aggregatedPreviousLayers.size()+remainingNodes.size();
         int layered = aggregatedPreviousLayers.size();
-        LOG.info("\ndisplay() {} of {} layered ({}%)", layered, base, layered*100/(base));
+        int percentage = layered*100/(base);
+        LOG.info("\ndisplay() {} of {} layered ({}%)", layered, base, percentage);
+        return percentage >= 100;
     }
 
 }
