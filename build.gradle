@@ -1,6 +1,6 @@
 /*
  *
- * Copyright 2015-2019 Martin Goellnitz
+ * Copyright 2015-2020 Martin Goellnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@
  */
 plugins {
   id 'net.ossindex.audit' version '0.4.11'
-  id 'io.franzbecker.gradle-lombok' version '3.1.0'
+  id 'io.franzbecker.gradle-lombok' version '3.2.0'
 }
 
 apply plugin: 'java'
@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.slf4j:slf4j-api:1.7.29'
+  implementation 'org.slf4j:slf4j-api:1.7.30'
   runtimeOnly    'ch.qos.logback:logback-classic:1.2.3'
   // output is achieved via logging through special logback.groovy - this is why groovy is needed here
   runtimeOnly    'org.codehaus.groovy:groovy:2.5.8'
@@ -59,7 +59,7 @@ dependencies {
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
-  testImplementation 'org.testng:testng:7.0.0'
+  testImplementation 'org.testng:testng:7.1.0'
 }
 
 lombok {
@@ -71,7 +71,7 @@ pmd {
   ruleSets = []
   ruleSetFiles = files('pmd.xml')
   sourceSets = [sourceSets.main]
-  toolVersion = '6.19.0'
+  toolVersion = '6.20.0'
 }
 
 test {
@@ -94,6 +94,14 @@ mainClassName='de.provocon.stratigraph.command.Analyse'
 
 application {
   applicationName = 'stg'
+}
+
+startScripts {
+  doLast {
+    // Add more reasonable memory
+    unixScript.text = unixScript.text.replace('DEFAULT_JVM_OPTS=""', 'DEFAULT_JVM_OPTS="-ms1280m -mx1536m -Xms1280m -Xmx1536m"')
+    windowsScript.text = windowsScript.text.replace('DEFAULT_JVM_OPTS=', 'DEFAULT_JVM_OPTS=-ms1280m -mx1536m -Xms1280m -Xmx1536m')
+  }
 }
 
 // Just my test target
