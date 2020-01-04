@@ -103,7 +103,7 @@ The full test cycle can be achieved - like CI does it - with
 
 ## Licensing
 
-WHile the source code in this repository is covered by the license mentioned
+While the source code in this repository is covered by the license mentioned
 in the file LICENSE, the libraries it depends on retain their own respective
 license which needs to be taken into account.
 
