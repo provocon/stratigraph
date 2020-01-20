@@ -40,7 +40,7 @@ dependencies {
   implementation 'org.slf4j:slf4j-api:1.7.30'
   runtimeOnly    'ch.qos.logback:logback-classic:1.2.3'
   // output is achieved via logging through special logback.groovy - this is why groovy is needed here
-  runtimeOnly    'org.codehaus.groovy:groovy:2.5.8'
+  runtimeOnly    'org.codehaus.groovy:groovy:2.5.9'
   implementation 'org.apache.commons:commons-lang3:3.9'
   implementation 'org.apache.commons:commons-collections4:4.4'
   implementation 'commons-cli:commons-cli:1.4'
