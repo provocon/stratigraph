@@ -70,7 +70,7 @@ public class JavaSourceProvider extends AbstractSourceProvider implements Source
         LOG.debug("scanHierarchy({}) {}", directory.getAbsolutePath(), directory.isDirectory());
         if (directory.isDirectory()) {
             for (File file : directory.listFiles()) {
-                if (file.getName().equals("src")) {
+                if ("src".equals(file.getName())) {
                     LOG.debug("scanHierarchy({}) source base dir {}", directoryName, file);
                     File mvnSrcDir = new File(file.getAbsolutePath()+"/main/java");
                     if (mvnSrcDir.exists()) {
