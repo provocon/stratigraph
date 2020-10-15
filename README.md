@@ -1,6 +1,8 @@
 # Stratigraph Softwarepackage Layer Analyser
 
-[![Build Status](https://gitlab.com/provocon/stratigraph/badges/master/build.svg)](https://gitlab.com/provocon/stratigraph/pipelines)
+[![Build Status](https://img.shields.io/gitlab/pipeline/provocon/stratigraph.svg)](https://gitlab.com/provocon/stratigraph/pipelines)
+[![Download](https://img.shields.io/badge/Download-Snapshot-blue)](https://gitlab.com/provocon/stratigraph/-/jobs/artifacts/master/download?job=build)
+
 
 Stratigraph is at the moment is a small command line tools to automatically
 detect the interconnection of soure code packages and the resulting layering
@@ -34,12 +36,10 @@ packages might be combined for a more coarse view if needed.
 
 ## Download of Packages
 
-[Download ZIP](https://gitlab.com/provocon/stratigraph/-/jobs/artifacts/master/download?job=build)
-
 The latest packages ready to use can be found at the on [GitLab][gitlab] at the
 latest [build pipeline](https://gitlab.com/provocon/stratigraph/pipelines)
-at [GitLab][gitlab]. Just download the build artifacts from the last `passed`
-build.
+at [GitLab][gitlab]. Download the Snapshot artifacts from the last build marked
+as `passed` like with the download-button above.
 
 
 ## Usage
