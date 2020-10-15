@@ -30,7 +30,7 @@ build:
   artifacts:
     paths:
     - stg*
-    expire_in: 10 days
+    expire_in: 60 days
     name: ${CI_BUILD_STAGE}
 
 cache:
