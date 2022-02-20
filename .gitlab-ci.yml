@@ -1,5 +1,5 @@
 # 
-# Copyright 2016-2019 Martin Goellnitz
+# Copyright 2016-2022 Martin Goellnitz
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
@@ -30,7 +30,7 @@ build:
   artifacts:
     paths:
     - stg*
-    expire_in: 60 days
+    expire_in: 90 days
     name: ${CI_BUILD_STAGE}
 
 cache:
