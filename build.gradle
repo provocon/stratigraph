@@ -33,7 +33,7 @@ println "Gradle: ${gradle.gradleVersion}"
 version='0.1-SNAPSHOT'
 
 repositories {
-  jcenter()
+  mavenCentral()
 }
 
 dependencies {
