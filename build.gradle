@@ -38,9 +38,9 @@ repositories {
 
 dependencies {
   implementation 'org.slf4j:slf4j-api:1.7.36'
-  runtimeOnly    'ch.qos.logback:logback-classic:1.2.10'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.2.11'
   // output is achieved via logging through special logback.groovy - this is why groovy is needed here
-  runtimeOnly    'org.codehaus.groovy:groovy:3.0.9'
+  runtimeOnly    'org.codehaus.groovy:groovy:3.0.10'
   implementation 'org.apache.commons:commons-lang3:3.12.0'
   implementation 'org.apache.commons:commons-collections4:4.4'
   implementation 'commons-cli:commons-cli:1.5.0'
@@ -60,13 +60,14 @@ dependencies {
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
+  // audit does not know 7.6.0
   testImplementation 'org.testng:testng:7.5'
   // security overrides for testng and audit
   testImplementation 'junit:junit:4.13.2'
 }
 
 lombok {
-  version = "1.18.22"
+  version = "1.18.24"
   sha256 = "39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742"
 }
 
@@ -74,7 +75,7 @@ pmd {
   ruleSets = []
   ruleSetFiles = files('pmd.xml')
   sourceSets = [sourceSets.main]
-  toolVersion = '6.42.0'
+  toolVersion = '6.46.0'
 }
 
 test {
@@ -84,11 +85,11 @@ test {
 
 audit {
   // PMD still references this one - so please update PMD once it is possible
-  ignore = [ 'commons-io:commons-io:2.6' ]
+  ignore = [ 'commons-io:commons-io:2.6', 'com.beust:jcommander:1.48' ]
 }
 
 jacoco {
-  toolVersion = '0.8.7'
+  toolVersion = '0.8.8'
 }
 
 jacocoTestReport {
