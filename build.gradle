@@ -68,7 +68,7 @@ dependencies {
 
 lombok {
   version = "1.18.24"
-  sha256 = "39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742"
+  sha256  = "39f3922deb679b1852af519eb227157ef2dd0a21eec3542c8ce1b45f2df39742"
 }
 
 pmd {
@@ -85,7 +85,9 @@ test {
 
 audit {
   // PMD still references this one - so please update PMD once it is possible
-  ignore = [ 'commons-io:commons-io:2.6', 'com.beust:jcommander:1.48' ]
+  ignore = [ 'commons-io:commons-io:2.6', 'com.beust:jcommander:1.48' , 'net.sf.jung:jung-graph-impl:2.1.1', 'com.google.guava:guava:31.0.1-jre' ]
+  user   = "$ossindexUser"
+  token  = "$ossindexToken"
 }
 
 jacoco {

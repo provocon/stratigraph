@@ -25,7 +25,7 @@ stages:
 build:
   stage: stratigraph
   script: 
-  - ./gradlew jacocoTestReport audit build assemble
+  - ./gradlew -PossindexUser=$OSS_INDEX_USER -PossindexToken=$OSS_INDEX_TOKEN jacocoTestReport audit build assemble
   - unzip build/distributions/*.zip
   artifacts:
     paths:
