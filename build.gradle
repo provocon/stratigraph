@@ -37,17 +37,17 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.slf4j:slf4j-api:1.7.36'
-  runtimeOnly    'ch.qos.logback:logback-classic:1.2.11'
+  implementation 'org.slf4j:slf4j-api:2.0.2'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.4.1'
   // output is achieved via logging through special logback.groovy - this is why groovy is needed here
-  runtimeOnly    'org.codehaus.groovy:groovy:3.0.12'
+  runtimeOnly    'org.codehaus.groovy:groovy:3.0.13'
   implementation 'org.apache.commons:commons-lang3:3.12.0'
   implementation 'org.apache.commons:commons-collections4:4.4'
   implementation 'commons-cli:commons-cli:1.5.0'
 
   implementation 'org.graphstream:gs-core:1.3'
   implementation 'org.graphstream:gs-ui:1.3'
-  implementation 'org.scala-lang:scala-library:2.13.8' // override scala lib for graphstream due to vulnerability
+  implementation 'org.scala-lang:scala-library:2.13.9' // override scala lib for graphstream due to vulnerability
   implementation 'junit:junit:4.13.2' // introduce overriden junit lib for graphstream due to vulnerability
 
   implementation 'net.sf.jung:jung-api:2.1.1'
@@ -75,7 +75,7 @@ pmd {
   ruleSets = []
   ruleSetFiles = files('pmd.xml')
   sourceSets = [sourceSets.main]
-  toolVersion = '6.48.0'
+  toolVersion = '6.49.0'
 }
 
 test {
