@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.slf4j:slf4j-api:2.0.2'
+  implementation 'org.slf4j:slf4j-api:2.0.3'
   runtimeOnly    'ch.qos.logback:logback-classic:1.4.1'
   // output is achieved via logging through special logback.groovy - this is why groovy is needed here
   runtimeOnly    'org.codehaus.groovy:groovy:3.0.13'
