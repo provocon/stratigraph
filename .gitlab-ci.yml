@@ -16,8 +16,8 @@
 #
 image: gradle:jdk11
 
-before_script:
-  - export GRADLE_USER_HOME=/tmp/.gradle
+variables:
+  GRADLE_USER_HOME: /tmp/.gradle
 
 stages:
   - stratigraph
