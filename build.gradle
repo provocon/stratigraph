@@ -85,7 +85,7 @@ test {
 
 audit {
   // PMD still references this one - so please update PMD once it is possible
-  ignore = [ 'commons-io:commons-io:2.6', 'com.beust:jcommander:1.48' , 'net.sf.jung:jung-graph-impl:2.1.1', 'com.google.guava:guava:31.0.1-jre' ]
+  ignore = [ 'commons-io:commons-io:2.6', 'com.beust:jcommander:1.48' , 'net.sf.jung:jung-graph-impl:2.1.1', 'com.google.guava:guava:31.0.1-jre', 'org.testng:testng:7.6.1' ]
   user   = "$ossindexUser"
   token  = "$ossindexToken"
 }
