@@ -239,7 +239,7 @@ public class JungVisualizer implements Visualizer {
 
         int base = aggregatedPreviousLayers.size()+remainingNodes.size();
         int layered = aggregatedPreviousLayers.size();
-        int percentage = layered*100/(base);
+        int percentage = layered*100/(Math.max(base, 1));
         LOG.info("\ndisplay() {} of {} layered ({}%)", layered, base, percentage);
 
         if (draw) {
