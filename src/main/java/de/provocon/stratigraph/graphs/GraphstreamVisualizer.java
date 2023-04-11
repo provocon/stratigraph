@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2019 PROVOCON
+ * Copyright 2016-2023 PROVOCON
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.swingViewer.ViewPanel;
+import org.graphstream.ui.view.View;
 import org.graphstream.ui.view.Viewer;
 
 
@@ -69,11 +69,13 @@ public class GraphstreamVisualizer implements Visualizer {
         g = new SingleGraph(title);
         URL cssResource = GraphstreamVisualizer.class.getResource("/graph.css");
         LOG.debug("css: {}", cssResource);
-        g.addAttribute("ui.stylesheet", "url('"+cssResource.toString()+"')");
+        g.setAttribute("ui.stylesheet", "url('"+cssResource.toString()+"')");
+        System.setProperty("org.graphstream.ui", "swing");
         Viewer viewer = g.display();
-        ViewPanel view = viewer.getDefaultView();
-        view.setLocation(50, 50);
-        view.resizeFrame(1800, 900);
+        View view = viewer.getDefaultView();
+        LOG.info("Dummy output for PMG: {}", view.getIdView());
+        // view.setLocation(50, 50);
+        // view.resizeFrame(1800, 900);
     }
 
 
@@ -90,7 +92,7 @@ public class GraphstreamVisualizer implements Visualizer {
         Node fn = g.getNode(packageName);
         if (fn==null) {
             fn = g.addNode(packageName);
-            fn.addAttribute(UI_LABEL, packageName);
+            fn.setAttribute(UI_LABEL, packageName);
             try {
                 Thread.sleep(nodeDelay);
             } catch (InterruptedException ie) {
@@ -101,7 +103,7 @@ public class GraphstreamVisualizer implements Visualizer {
             Node tn = g.getNode(tp.getKey());
             if (tn==null) {
                 tn = g.addNode(tp.getKey());
-                tn.addAttribute(UI_LABEL, tp.getKey());
+                tn.setAttribute(UI_LABEL, tp.getKey());
                 try {
                     Thread.sleep(nodeDelay);
                 } catch (InterruptedException ie) {
@@ -115,12 +117,12 @@ public class GraphstreamVisualizer implements Visualizer {
 
             }
             Integer weight = tp.getValue();
-            e.addAttribute("weight", weight);
-            e.addAttribute(UI_LABEL, weight);
+            e.setAttribute("weight", weight);
+            e.setAttribute(UI_LABEL, weight);
             if (weight>9) {
                 weight = 10;
             }
-            e.addAttribute("ui.class", "w"+weight);
+            e.setAttribute("ui.class", "w"+weight);
         }
     }
 
@@ -148,10 +150,9 @@ public class GraphstreamVisualizer implements Visualizer {
 
         };
 
-        // LOG.info("display() nodes: {} / {}", g.getNodeSet().size(), g.getNodeCount());
         List<Node> outZero = new ArrayList<>();
-        for (Node n : g.getNodeSet()) {
-            // LOG.info("display() {}: {} {}", n.getAttribute(UI_LABEL), n.getOutDegree(), n.getInDegree());
+        for (int i=0; i < g.getNodeCount(); i++) {
+            Node n = g.getNode(i);
             if (n.getOutDegree()==0) {
                 outZero.add(n);
             }
@@ -166,7 +167,8 @@ public class GraphstreamVisualizer implements Visualizer {
         Collection<Node> aggregatedPreviousLayers = outZero;
         int level = 1;
         List<Node> remainingNodes = new ArrayList<>();
-        for (Node n : g.getNodeSet()) {
+        for (int i=0; i < g.getNodeCount(); i++) {
+            Node n = g.getNode(i);
             if (!aggregatedPreviousLayers.contains(n)) {
                 remainingNodes.add(n);
             }
@@ -181,7 +183,8 @@ public class GraphstreamVisualizer implements Visualizer {
             Set<Node> newLayer = new HashSet<>();
             for (Node n : remainingNodes) {
                 boolean isInLayer = true;
-                for (Edge e : n.getEachLeavingEdge()) {
+                for (int i=0; i<n.getOutDegree(); i++) {
+                    Edge e = n.getLeavingEdge(i);
                     if (!aggregatedPreviousLayers.contains(e.getTargetNode())) {
                         isInLayer = false;
                     }
@@ -194,7 +197,8 @@ public class GraphstreamVisualizer implements Visualizer {
             }
             aggregatedPreviousLayers.addAll(newLayer);
             remainingNodes = new ArrayList<>();
-            for (Node n : g.getNodeSet()) {
+            for (int i=0; i < g.getNodeCount(); i++) {
+                Node n = g.getNode(i);
                 if (!aggregatedPreviousLayers.contains(n)) {
                     remainingNodes.add(n);
                 }
@@ -211,13 +215,14 @@ public class GraphstreamVisualizer implements Visualizer {
         }
         for (Node n : remainingNodes) {
             List<String> conflictingNodes = new ArrayList<>();
-            for (Edge e : n.getEachLeavingEdge()) {
+            for (int i=0; i<n.getOutDegree(); i++) {
+                Edge e = n.getLeavingEdge(i);
                 if (!aggregatedPreviousLayers.contains(e.getTargetNode())) {
-                    conflictingNodes.add(e.getTargetNode().getAttribute(UI_LABEL));
+                    conflictingNodes.add(e.getTargetNode().getAttribute(UI_LABEL, String.class));
                 }
             }
             Collections.sort(conflictingNodes);
-            String fromNode = n.getAttribute(UI_LABEL);
+            String fromNode = n.getAttribute(UI_LABEL, String.class);
             for (String toNode : conflictingNodes) {
                 LOG.info("display() {} - {}", fromNode, toNode);
             }
