@@ -57,7 +57,7 @@ dependencies {
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
-  testImplementation 'org.testng:testng:7.7.1'
+  testImplementation 'org.testng:testng:7.8.0'
   // security overrides for testng and audit
   testImplementation 'junit:junit:4.13.2'
 }
