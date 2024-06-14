@@ -41,7 +41,7 @@ dependencies {
   runtimeOnly    'ch.qos.logback:logback-classic:1.5.6'
   implementation 'org.apache.commons:commons-lang3:3.14.0'
   implementation 'org.apache.commons:commons-collections4:4.4'
-  implementation 'commons-cli:commons-cli:1.7.0'
+  implementation 'commons-cli:commons-cli:1.8.0'
 
   implementation 'org.graphstream:gs-core:2.0'
   implementation 'org.graphstream:gs-ui-swing:2.0'
@@ -53,11 +53,11 @@ dependencies {
   implementation 'net.sf.jung:jung-algorithms:2.1.1'
   implementation 'net.sf.jung:jung-io:2.1.1'
   implementation 'net.sf.jung:jung-graph-impl:2.1.1'
-  implementation 'com.google.guava:guava:32.0.1-jre' // override guava for jung due to vulnerability
+  implementation 'com.google.guava:guava:33.2.1-jre' // override guava for jung due to vulnerability
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
-  testImplementation 'org.testng:testng:7.10.1'
+  testImplementation 'org.testng:testng:7.10.2'
   // security overrides for testng and audit
   testImplementation 'junit:junit:4.13.2'
 }
