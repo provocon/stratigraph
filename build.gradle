@@ -37,11 +37,11 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.slf4j:slf4j-api:2.0.13'
-  runtimeOnly    'ch.qos.logback:logback-classic:1.5.6'
-  implementation 'org.apache.commons:commons-lang3:3.14.0'
+  implementation 'org.slf4j:slf4j-api:2.0.16'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.5.11'
+  implementation 'org.apache.commons:commons-lang3:3.17.0'
   implementation 'org.apache.commons:commons-collections4:4.4'
-  implementation 'commons-cli:commons-cli:1.8.0'
+  implementation 'commons-cli:commons-cli:1.9.0'
 
   implementation 'org.graphstream:gs-core:2.0'
   implementation 'org.graphstream:gs-ui-swing:2.0'
@@ -63,7 +63,7 @@ dependencies {
 }
 
 lombok {
-  version = "1.18.32"
+  version = "1.18.34"
   sha256 = "2af1fa836848761b6e51440ec628b49dc38080e9871bb352701fb8c8358087cf"
 }
 
