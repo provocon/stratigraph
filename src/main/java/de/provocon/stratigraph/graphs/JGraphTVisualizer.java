@@ -44,9 +44,8 @@ public class JGraphTVisualizer implements Visualizer {
      * @param title title to be used for the graph
      */
     @Override
-
     public void init(String title) {
-        this.g = new DefaultDirectedWeightedGraph(PackageEdge.class);
+        this.g = new DefaultDirectedWeightedGraph<>(PackageEdge.class);
     }
 
 

@@ -137,7 +137,7 @@ public final class Analyse {
             }
             boolean success = v.display();
             if (!(noerror || success)) {
-                System.exit(1); // NOPMD
+                System.exit(1);
             }
         }
     }

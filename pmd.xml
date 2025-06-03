@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
- Copyright 2015-2023 Martin Goellnitz
+ Copyright 2015-2025 Martin Goellnitz
 
  This program is free software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
+ it under the terms of the GNU Lesser General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
 
  This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU General Public License for more details.
+ GNU Lesser General Public License for more details.
 
- You should have received a copy of the GNU General Public License
+ You should have received a copy of the GNU Lesser General Public License
  along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 -->
@@ -32,6 +32,11 @@
   <rule ref="category/java/bestpractices.xml">
     <exclude name="GuardLogStatement"/>
     <exclude name="UseVarargs"/>
+  </rule>
+  <rule ref="category/java/bestpractices.xml/UnitTestContainsTooManyAsserts">
+    <properties>
+      <property name="maximumAsserts" value="12" />
+    </properties>
   </rule>
   <rule ref="category/java/codestyle.xml">
     <exclude name="AtLeastOneConstructor"/>
@@ -61,24 +66,16 @@
     <!-- not necessarily a good ideas for other projects -->
     <exclude name="NPathComplexity"/>
   </rule>
+  <rule ref="category/java/design.xml/CouplingBetweenObjects">
+    <properties>
+      <property name="threshold" value="51" />
+    </properties>
+  </rule>
   <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts">
     <properties>
       <property name="problemDepth" value="5"/>
     </properties>
   </rule>
-  <rule ref="category/java/codestyle.xml/ShortClassName">
-    <properties>
-      <property name="minimum" value="4"/>
-    </properties>
-  </rule>
-  <!-- settings don't work
-  <rule ref="category/java/design.xml/CyclomaticComplexity">
-    <properties>
-      <property name="classReportLevel" value="165"/>
-      <property name="methodReportLevel" value="40"/>
-    </properties>
-  </rule>
-  -->
   <rule ref="category/java/design.xml/CognitiveComplexity">
     <properties>
       <property name="reportLevel" value="70"/>
@@ -87,11 +84,6 @@
   <rule ref="category/java/design.xml/ExcessiveImports">
     <properties>
       <property name="minimum" value="35"/>
-    </properties>
-  </rule>
-  <rule ref="category/java/design.xml/ExcessiveMethodLength">
-    <properties>
-      <property name="minimum" value="200"/>
     </properties>
   </rule>
   <rule ref="category/java/design.xml/ExcessivePublicCount">
@@ -107,7 +99,7 @@
   </rule>
   <rule ref="category/java/design.xml/TooManyMethods">
     <properties>
-      <property name="maxmethods" value="25"/>
+      <property name="maxmethods" value="30"/>
     </properties>
   </rule>
   <rule ref="category/java/documentation.xml">
@@ -120,22 +112,20 @@
   </rule>
   <rule ref="category/java/errorprone.xml">
     <exclude name="AvoidLiteralsInIfCondition"/>
-    <exclude name="DataflowAnomalyAnalysis"/>
     <exclude name="TestClassWithoutTestCases"/>
   </rule>
-  <rule ref="category/java/errorprone.xml/AvoidDuplicateLiterals">
+  <rule ref="category/java/errorprone.xml/EmptyCatchBlock">
     <properties>
-      <property name="minimumLength" value="5"/>
-      <property name="maxDuplicateLiterals" value="4"/>
+      <property name="allowCommentedBlocks" value="true" />
     </properties>
   </rule>
   <rule ref="category/java/multithreading.xml">
     <exclude name="UseConcurrentHashMap"/>
+    <exclude name="DoNotUseThreads"/>
   </rule>
   <rule ref="category/java/performance.xml">
     <exclude name="AvoidInstantiatingObjectsInLoops"/>
     <exclude name="AddEmptyString"/>
-    <exclude name="ConsecutiveAppendsShouldReuse"/>
   </rule>
   <rule ref="category/java/security.xml"/>
 

@@ -69,9 +69,8 @@ public class JungVisualizer implements Visualizer {
      * @param title title to be used for the graph
      */
     @Override
-
     public void init(String title) {
-        this.g = new DirectedSparseGraph();
+        this.g = new DirectedSparseGraph<>();
         this.title = title;
     }
 
@@ -118,13 +117,13 @@ public class JungVisualizer implements Visualizer {
         if (draw) {
             JFrame jf = new JFrame(title);
             // Forest f = new DelegateForest(g);
-            KKLayout layout = new KKLayout(g);
+            KKLayout layout = new KKLayout<>(g);
             layout.setAdjustForGravity(true);
             layout.setDisconnectedDistanceMultiplier(0);
             layout.setExchangeVertices(true);
             Dimension preferredSize = new Dimension(1600, 850);
             layout.setSize(preferredSize);
-            VisualizationViewer vv = new VisualizationViewer(layout, preferredSize);
+            VisualizationViewer vv = new VisualizationViewer<>(layout, preferredSize);
             final Function edgePaintFunction = new Function() {
                 @Override
                 public Object apply(Object f) {
@@ -148,7 +147,7 @@ public class JungVisualizer implements Visualizer {
             vv.getRenderContext().setEdgeStrokeTransformer(edgeStrokeFunction);
             final VertexLabelRenderer vertexLabel = new VertexLabelRenderer() {
                 @Override
-                public <T> Component getVertexLabelRendererComponent(JComponent jc, Object o, Font font, boolean bln, T t) { // NOPMD
+                public <T> Component getVertexLabelRendererComponent(JComponent jc, Object o, Font font, boolean bln, T t) {
                     return new JLabel(t.toString());
                 }
 
@@ -246,7 +245,7 @@ public class JungVisualizer implements Visualizer {
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException ie) {
-
+                // We don't actually care how long this takes in details or if it's interrupted.
             }
             System.exit(0); // NOPMD
         }

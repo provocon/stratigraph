@@ -96,7 +96,7 @@ public class GraphstreamVisualizer implements Visualizer {
             try {
                 Thread.sleep(nodeDelay);
             } catch (InterruptedException ie) {
-
+                // We don't actually care how long this takes in details or if it's interrupted.
             }
         }
         for (Map.Entry<String, Integer> tp : targetPackages.entrySet()) {
@@ -107,14 +107,14 @@ public class GraphstreamVisualizer implements Visualizer {
                 try {
                     Thread.sleep(nodeDelay);
                 } catch (InterruptedException ie) {
-
+                    // We don't actually care how long this takes in details or if it's interrupted.
                 }
             }
             Edge e = g.addEdge(packageName+tp.getKey(), fn, tn, true);
             try {
                 Thread.sleep(edgeDelay);
             } catch (InterruptedException ie) {
-
+                // We don't actually care how long this takes in details or if it's interrupted.
             }
             Integer weight = tp.getValue();
             e.setAttribute("weight", weight);
@@ -134,7 +134,8 @@ public class GraphstreamVisualizer implements Visualizer {
      */
     @Override
     public boolean display() {
-        Comparator<Node> nodeComparator = new Comparator<Node>() {
+
+        Comparator<Node> nodeComparator = new Comparator<>() {
 
             /**
              * Compare two nodes according to their ui.label attribute.
@@ -144,7 +145,7 @@ public class GraphstreamVisualizer implements Visualizer {
              * @return result of the comparison of the ui.label strings of the two nodes
              */
             @Override
-            public int compare(Node o1, Node o2) { // NOPMD
+            public int compare(Node o1, Node o2) {
                 return o1.getAttribute(UI_LABEL).toString().compareTo(o2.getAttribute(UI_LABEL).toString());
             }
 
