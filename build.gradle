@@ -37,10 +37,10 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.slf4j:slf4j-api:2.0.16'
-  runtimeOnly    'ch.qos.logback:logback-classic:1.5.11'
+  implementation 'org.slf4j:slf4j-api:2.0.17'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.5.18'
   implementation 'org.apache.commons:commons-lang3:3.17.0'
-  implementation 'org.apache.commons:commons-collections4:4.4'
+  implementation 'org.apache.commons:commons-collections4:4.5.0'
   implementation 'commons-cli:commons-cli:1.9.0'
 
   implementation 'org.graphstream:gs-core:2.0'
@@ -57,14 +57,14 @@ dependencies {
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
-  testImplementation 'org.testng:testng:7.10.2'
+  testImplementation 'org.testng:testng:7.11.0'
   // security overrides for testng and audit
   testImplementation 'junit:junit:4.13.2'
 }
 
 lombok {
-  version = "1.18.34"
-  sha256 = "2af1fa836848761b6e51440ec628b49dc38080e9871bb352701fb8c8358087cf"
+  version = "1.18.38"
+  sha256 = ""
 }
 
 pmd {
@@ -87,7 +87,7 @@ audit {
 }
 
 jacoco {
-  toolVersion = '0.8.12'
+  toolVersion = '0.8.13'
 }
 
 jacocoTestReport {
