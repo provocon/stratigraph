@@ -1,6 +1,6 @@
 /*
  *
- * Copyright 2015-2024 Martin Goellnitz
+ * Copyright 2015-2025 Martin Goellnitz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@ pmd {
   ruleSets = []
   ruleSetFiles = files('pmd.xml')
   sourceSets = [sourceSets.main]
-  toolVersion = '7.14.0'
+  toolVersion = '7.15.0'
 }
 
 test {
