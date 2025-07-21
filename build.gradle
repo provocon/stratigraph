@@ -39,7 +39,7 @@ repositories {
 dependencies {
   implementation 'org.slf4j:slf4j-api:2.0.17'
   runtimeOnly    'ch.qos.logback:logback-classic:1.5.18'
-  implementation 'org.apache.commons:commons-lang3:3.17.0'
+  implementation 'org.apache.commons:commons-lang3:3.18.0'
   implementation 'org.apache.commons:commons-collections4:4.5.0'
   implementation 'commons-cli:commons-cli:1.9.0'
 
@@ -53,7 +53,7 @@ dependencies {
   implementation 'net.sf.jung:jung-algorithms:2.1.1'
   implementation 'net.sf.jung:jung-io:2.1.1'
   implementation 'net.sf.jung:jung-graph-impl:2.1.1'
-  implementation 'com.google.guava:guava:33.2.1-jre' // override guava for jung due to vulnerability
+  implementation 'com.google.guava:guava:33.4.8-jre' // override guava for jung due to vulnerability
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
