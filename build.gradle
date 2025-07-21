@@ -81,7 +81,7 @@ test {
 
 audit {
   // PMD still references this one - so please update PMD once it is possible
-  ignore = [ 'com.beust:jcommander:1.48' ]
+  ignore = [ 'com.beust:jcommander:1.48', 'org.apache.commons:commons-lang3:3.17.0' ]
   user   = "$ossindexUser"
   token  = "$ossindexToken"
 }
