@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.help.HelpFormatter;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
@@ -85,8 +85,8 @@ public final class Analyse {
         CommandLine cmd = parser.parse(options, args);
 
         if (cmd.hasOption('h')) {
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("stg", options);
+            HelpFormatter formatter = HelpFormatter.builder().get();
+            formatter.printHelp("stg", "", options, "", false);
         } else {
             boolean useGraphstream = cmd.hasOption('g');
             boolean useJGraphT = cmd.hasOption('j');
