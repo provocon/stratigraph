@@ -179,8 +179,9 @@ public class GraphstreamVisualizer implements Visualizer {
             progress = false;
             Collections.sort(remainingNodes, nodeComparator);
             // LOG.info("display() remaining  nodes {}", remainingNodes);
-            LOG.info("\ndisplay() level {}", level++);
-            // LOG.info("display() allready handled {}", aggregatedPreviousLayers);
+            LOG.info("\ndisplay() level {}", level);
+            level++;
+            // LOG.info("display() already handled {}", aggregatedPreviousLayers);
             Set<Node> newLayer = new HashSet<>();
             for (Node n : remainingNodes) {
                 boolean isInLayer = true;

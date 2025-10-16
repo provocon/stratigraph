@@ -137,8 +137,9 @@ public class JGraphTVisualizer implements Visualizer {
             progress = false;
             Collections.sort(remainingNodes);
             // LOG.info("display() remaining  nodes {}", remainingNodes);
-            LOG.info("\ndisplay() level {}", level++);
-            // LOG.info("display() allready handled {}", aggregatedPreviousLayers);
+            LOG.info("\ndisplay() level {}", level);
+            level++;
+            // LOG.info("display() already handled {}", aggregatedPreviousLayers);
             Set<String> newLayer = new HashSet<>();
             for (String n : remainingNodes) {
                 boolean isInLayer = true;
