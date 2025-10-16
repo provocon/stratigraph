@@ -38,10 +38,10 @@ repositories {
 
 dependencies {
   implementation 'org.slf4j:slf4j-api:2.0.17'
-  runtimeOnly    'ch.qos.logback:logback-classic:1.5.18'
-  implementation 'org.apache.commons:commons-lang3:3.18.0'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.5.19'
+  implementation 'org.apache.commons:commons-lang3:3.19.0'
   implementation 'org.apache.commons:commons-collections4:4.5.0'
-  implementation 'commons-cli:commons-cli:1.9.0'
+  implementation 'commons-cli:commons-cli:1.10.0'
 
   implementation 'org.graphstream:gs-core:2.0'
   implementation 'org.graphstream:gs-ui-swing:2.0'
@@ -53,7 +53,7 @@ dependencies {
   implementation 'net.sf.jung:jung-algorithms:2.1.1'
   implementation 'net.sf.jung:jung-io:2.1.1'
   implementation 'net.sf.jung:jung-graph-impl:2.1.1'
-  implementation 'com.google.guava:guava:33.4.8-jre' // override guava for jung due to vulnerability
+  implementation 'com.google.guava:guava:33.5.0-jre' // override guava for jung due to vulnerability
 
   implementation 'org.javabits.jgrapht:jgrapht-core:0.9.3'
 
@@ -63,7 +63,7 @@ dependencies {
 }
 
 lombok {
-  version = "1.18.38"
+  version = "1.18.42"
   sha256 = ""
 }
 
@@ -71,7 +71,7 @@ pmd {
   ruleSets = []
   ruleSetFiles = files('pmd.xml')
   sourceSets = [sourceSets.main]
-  toolVersion = '7.15.0'
+  toolVersion = '7.17.0'
 }
 
 test {
@@ -81,13 +81,13 @@ test {
 
 audit {
   // PMD still references this one - so please update PMD once it is possible
-  ignore = [ 'com.beust:jcommander:1.48', 'org.apache.commons:commons-lang3:3.17.0' ]
+  ignore = [ 'com.beust:jcommander:1.48', ]
   user   = "$ossindexUser"
   token  = "$ossindexToken"
 }
 
 jacoco {
-  toolVersion = '0.8.13'
+  toolVersion = '0.8.14'
 }
 
 jacocoTestReport {
