@@ -97,10 +97,9 @@ jacocoTestReport {
   }
 }
 
-mainClassName='de.provocon.stratigraph.command.Analyse'
-
 application {
   applicationName = 'stg'
+  mainClass.set('de.provocon.stratigraph.command.Analyse')
 }
 
 startScripts {
@@ -117,8 +116,10 @@ run {
 }
 
 // Basic code setup
-sourceCompatibility = 11
-targetCompatibility = 11
+java {
+  sourceCompatibility = 11
+  targetCompatibility = 11
+}
 compileJava.options.encoding = 'UTF-8'
 compileJava.options.deprecation = true
 
