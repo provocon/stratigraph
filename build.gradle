@@ -38,10 +38,10 @@ repositories {
 
 dependencies {
   implementation 'org.slf4j:slf4j-api:2.0.17'
-  runtimeOnly    'ch.qos.logback:logback-classic:1.5.19'
-  implementation 'org.apache.commons:commons-lang3:3.19.0'
+  runtimeOnly    'ch.qos.logback:logback-classic:1.5.21'
+  implementation 'org.apache.commons:commons-lang3:3.20.0'
   implementation 'org.apache.commons:commons-collections4:4.5.0'
-  implementation 'commons-cli:commons-cli:1.10.0'
+  implementation 'commons-cli:commons-cli:1.11.0'
 
   implementation 'org.graphstream:gs-core:2.0'
   implementation 'org.graphstream:gs-ui-swing:2.0'
@@ -71,7 +71,7 @@ pmd {
   ruleSets = []
   ruleSetFiles = files('pmd.xml')
   sourceSets = [sourceSets.main]
-  toolVersion = '7.17.0'
+  toolVersion = '7.19.0'
 }
 
 test {
