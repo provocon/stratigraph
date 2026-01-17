@@ -14,7 +14,7 @@ if the intended structure matches the one derived from the code.
 
 ## Feedback
 
-Please use the [issues][issues] section of this repository at [github][github] 
+Please use the [issues][issues] section of this repository at [codeberg][codeberg]
 for feedback. 
 
 
@@ -119,7 +119,7 @@ license which needs to be taken into account.
 * LGPL 3: GraphStream
 
 
-[issues]: https://github.com/provocon/stratigraph/issues
-[github]: https://github.com/provocon/stratigraph
+[issues]: https://codeberg.org/provocon/stratigraph/issues
+[codeberg]: https://codeberg.org/provocon/stratigraph
 [gitlab]: https://gitlab.com/provocon/stratigraph
 [gradle]: https://gradle.org/
